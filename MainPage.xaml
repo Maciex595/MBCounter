@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Counter.MainPage">
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <Entry
+                x:Name="CounterNameEntry"
+                Placeholder="Enter counter name" />
+            <Entry
+                x:Name="InitialValueEntry"
+                Placeholder="Enter initial value"
+                Keyboard="Numeric" />
+            <Button
+                Text="Add Counter"
+                Clicked="OnAddCounterClicked" />
+            <CollectionView x:Name="CounterListView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Margin="0,5" Padding="10">
+                            <VerticalStackLayout Spacing="10">
+                                <Label Text="{Binding DisplayText}" 
+                                       FontSize="16"
+                                       HorizontalOptions="Center"/>
+                                <HorizontalStackLayout Spacing="10" 
+                                                     HorizontalOptions="Center">
+                                    <Button Text="Decrease" 
+                                            Clicked="OnDecreaseClicked" 
+                                            CommandParameter="{Binding Name}"
+                                            WidthRequest="100"/>
+                                    <Button Text="Increase" 
+                                            Clicked="OnIncreaseClicked" 
+                                            CommandParameter="{Binding Name}"
+                                            WidthRequest="100"/>
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
